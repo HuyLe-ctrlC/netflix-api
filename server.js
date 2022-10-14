@@ -13,6 +13,6 @@ app.use(express.json());
 
 app.use("/api/user", userRoutes);
 
-http.listen(process.env.PORT || 5000, function () {
+app.listen(process.env.PORT || 5000, function () {
   console.log("listening on *:5000");
 });
