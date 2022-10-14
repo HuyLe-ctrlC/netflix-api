@@ -12,7 +12,5 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/user", userRoutes);
-
-app.listen(process.env.PORT || 5000, function () {
-  console.log("listening on *:5000");
-});
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, console.log(`Server is running on ${PORT}`));
