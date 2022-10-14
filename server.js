@@ -1,24 +1,15 @@
 const express = require("express");
 const cors = require("cors");
-const mongoose = require("mongoose");
-const userRoutes = require("./routes/UserRoutes");
+const dotenv = require("dotenv");
 
+dotenv.config();
+const userRoutes = require("./routes/UserRoutes");
+const dbConnect = require("./db/connectDB");
 const app = express();
 
+dbConnect();
 app.use(cors());
 app.use(express.json());
-
-mongoose
-  .connect("mongodb://localhost:27017/netflix", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("DB Connection Successfully");
-  })
-  .catch((err) => {
-    console.log(err.message);
-  });
 
 app.use("/api/user", userRoutes);
 
